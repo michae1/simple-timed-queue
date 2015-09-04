@@ -7,6 +7,10 @@
     "test": "mocha",
     "jshint": "jshint *.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michae1/simple-timed-queue"
+  },
   "author": {
     "name": "Michael Plakhov",
     "email": "qotsaman@gmail.com"
