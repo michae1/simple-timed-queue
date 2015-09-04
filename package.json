@@ -24,11 +24,10 @@
     "index.js"
   ],
   "engines": {
-    "node": ">= 0.8"
+    "node": ">= 0.10"
   },
   "dependencies": {
-    "mocha": "^2.3.0",
-    "node-mocks-http": "^1.4.3",
+    "mocha": "2.x",
     "jshint": "2.6.x"
   },
   "license": "ISC"
