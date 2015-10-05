@@ -1,6 +1,6 @@
 {
   "name": "simple-timed-queue",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Queue data structure with expiration",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   "engines": {
     "node": ">= 0.10"
   },
-  "dependencies": {
+  "devDependencies": {
     "mocha": "2.x",
     "jshint": "2.6.x"
   },

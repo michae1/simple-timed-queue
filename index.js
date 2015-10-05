@@ -28,7 +28,7 @@ module.exports = function (ttl, delta) {
         this.length = this.queue.length - this.offset;
     };
 
-    this.dequeue = function () {
+    this.dequeue = function (withTimeLeft) {
         // if the queue is empty, return immediately
         if (this.queue.length === 0) {
             return undefined;
@@ -40,7 +40,6 @@ module.exports = function (ttl, delta) {
             oldShift = this._getLastTimer(),
             self = this,
             newShift = null;
-
         // increment the offset and remove the free space if necessary
         this.removeItem();
 
@@ -55,6 +54,8 @@ module.exports = function (ttl, delta) {
             else
                 this.timer = null;
         }
+        if (withTimeLeft)
+            return [item, timer - Date.now()];
         return item;
 
     };
