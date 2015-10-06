@@ -1,9 +1,10 @@
 /* jshint node: true */
 /* Based on queue implementation by Stephen Morley - http://code.stephenmorley.org/ */
 'use strict';
+var Evemit = require('evemit');
 
-module.exports = function (ttl, delta) {
-
+function Queue(ttl, delta, disableEvents) {
+    Evemit.call(this);
     this.queue  = []; // elements
     this.offset = 0;
 
@@ -85,8 +86,15 @@ module.exports = function (ttl, delta) {
             }
         }
 
-        for (var j = 0; j<removeNum;j++)
-            this.removeItem();
+        for (var j = 0; j<removeNum;j++){
+            if (disableEvents)
+                this.removeItem();
+            else {
+                var item = this.peek();
+                this.removeItem();
+                this.emit('expired', item);
+            }
+        }
 
         clearTimeout(this.timer);
 
@@ -110,3 +118,7 @@ module.exports = function (ttl, delta) {
     };
 
 };
+
+Queue.prototype = Evemit.prototype;
+
+module.exports = Queue;

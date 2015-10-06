@@ -42,4 +42,33 @@ describe('TimedQueue', function() {
             done();
         }, 2);
     });
+    it('should emit expire event', function (done) {
+        var q = new TimedQueue(10);
+
+        q.on('expired', function(item){
+            assert.equal(item, 13);
+            done();
+        })
+
+        q.enqueue(13);
+    
+        setTimeout(function(){
+            // For expiration
+        }, 12);
+    });
+    it('should not emit expire event if configured', function (done) {
+        var q = new TimedQueue(10, null, true);
+
+        q.on('expired', function(item){
+            assert(false, 'Event should never fired but it was');
+            done();
+        })
+
+        q.enqueue(13);
+    
+        setTimeout(function(){
+            assert(true);
+            done();
+        }, 12);
+    });
 });    
