@@ -1,6 +1,6 @@
 {
   "name": "simple-timed-queue",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Queue data structure with expiration",
   "main": "index.js",
   "scripts": {

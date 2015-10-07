@@ -5,32 +5,47 @@
 Queue data structure with expiration
 
 ### Syntax
-```var q = new TimedQueue(ttl, delta, disableEvents);```
+``` javascript
+> var q = new TimedQueue(ttl, delta, disableEvents);
+> q.enqueue(10 /* any variable/object */);
+> q.dequeue();
+10
+```
+
+deque can return timeleft of stored object:
+
+``` javascript
+> q.dequeue(true);
+[10, 200 /* timeleft */ ]
+```
 
 ## Usage
 ``` javascript
-var q = new TimedQueue(100); // entries ttl
-
-q.enqueue('text1');
-q.dequeue();
+> var q = new TimedQueue(100); // entries ttl
+> q.enqueue('text1');
+> q.dequeue();
 // test1
-q.enqueue('text2');
+> q.enqueue('text2');
 ...
 // 0.1 second here
 ...
-q.dequeue();
-// undefined
+> q.dequeue();
+undefined
 ```
 
 Queue will emit 'expire' event for item:
 
-```q.on('expired', function(data){
-    console.log('expired:', data)
-})```
+``` javascript
+q.on('expired', function(data){
+    console.log('expired:', data);
+})
+```
 
 This can be disabled with disableEvents flag:
 
-```var q = new TimedQueue(100, null, true);```
+``` javascript
+var q = new TimedQueue(100, null, true);
+```
 
 [travis-badge]: https://travis-ci.org/michae1/simple-timed-queue.svg?branch=master
 [travis-url]: https://travis-ci.org/michae1/simple-timed-queue
