@@ -117,7 +117,7 @@ function Queue(ttl, delta, disableEvents) {
         return (this.timeouts.length > 0 ? this.timeouts[this.offset] : undefined);
     };
 
-};
+}
 
 Queue.prototype = Evemit.prototype;
 

@@ -38,7 +38,7 @@ Queue will emit 'expire' event for item:
 ``` javascript
 q.on('expired', function(data){
     console.log('expired:', data);
-})
+});
 ```
 
 This can be disabled with disableEvents flag:
